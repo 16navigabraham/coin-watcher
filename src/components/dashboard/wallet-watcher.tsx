@@ -1,30 +1,42 @@
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Wallet, DollarSign } from 'lucide-react';
+'use client';
 
-const wallets = [
-  { address: '0x123...aBcDe', name: 'Main Wallet', balance: 12.3456, currency: 'ETH' },
-  { address: '0x456...fGhIj', name: 'Trading Wallet', balance: 5.6789, currency: 'ETH' },
-  { address: '0x789...kLmNo', name: 'Degen Wallet', balance: 88.1234, currency: 'ETH' },
-  { address: '0xABC...pQrSt', name: 'Hodl Vault', balance: 1.2345, currency: 'ETH' },
+import { Wallet } from 'lucide-react';
+import { useAccount } from 'wagmi';
+import { WalletCard } from './wallet-card';
+import { Skeleton } from '../ui/skeleton';
+
+// Example addresses to watch, you can make this dynamic
+const watchedAddresses: `0x${string}`[] = [
+  '0x73BCEb1Cd57C711feC4224D062b0F67565cD5acT', // Example: Vitalik Buterin
+  '0x9C5083dd4838E120D1A5F42748254769160e02uE', // Example: Uniswap V3 Router
+  '0x1c3125B3d1685b3777473715875974665E0F2369', // Example: APE Foundation
 ];
 
+
 export function WalletWatcher() {
+  const { address, isConnected } = useAccount();
+
   return (
     <div>
       <h2 className="text-2xl font-semibold mb-4">Watched Wallets</h2>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {wallets.map((wallet) => (
-          <Card key={wallet.address}>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">{wallet.name}</CardTitle>
-              <Wallet className="h-4 w-4 text-muted-foreground" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">{wallet.balance.toFixed(4)} {wallet.currency}</div>
-              <p className="text-xs text-muted-foreground truncate">{wallet.address}</p>
-            </CardContent>
-          </Card>
+        {isConnected && address && <WalletCard address={address} name="My Wallet" isConnectedWallet={true}/>}
+
+        {watchedAddresses.map((addr) => (
+          <WalletCard key={addr} address={addr} name={`Watched Wallet`} />
         ))}
+         {!isConnected && Array.from({ length: 4 }).map((_, i) => 
+            <div key={i} className="p-6 border rounded-lg">
+                <div className="flex flex-row items-center justify-between space-y-0 pb-2">
+                    <Skeleton className="h-4 w-24"/>
+                    <Wallet className="h-4 w-4 text-muted-foreground" />
+                </div>
+                <div>
+                    <Skeleton className="h-7 w-40 mb-2"/>
+                    <Skeleton className="h-3 w-32"/>
+                </div>
+            </div>
+        )}
       </div>
     </div>
   );
