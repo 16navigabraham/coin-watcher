@@ -7,7 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 import { Bell, Trash2 } from "lucide-react";
 
-export function AlertConfigurator() {
+export function AlertConfigurator({ settings, onSettingsChange, errors }: any) {
   return (
     <Card>
       <CardHeader>

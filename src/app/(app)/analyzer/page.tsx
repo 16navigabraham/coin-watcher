@@ -1,7 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContractAssessment } from "@/components/analyzer/contract-assessment";
 import { TrendAnalyzer } from "@/components/analyzer/trend-analyzer";
-import { validateContractAddress, validateTrendQuery } from "./actions";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function AnalyzerPage() {
@@ -25,7 +24,7 @@ export default function AnalyzerPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
- <ContractAssessment validateAddress={validateContractAddress} />
+              <ContractAssessment />
             </CardContent>
           </Card>
         </TabsContent>
@@ -38,7 +37,7 @@ export default function AnalyzerPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
- <TrendAnalyzer validateQuery={validateTrendQuery} />
+              <TrendAnalyzer />
             </CardContent>
           </Card>
         </TabsContent>
