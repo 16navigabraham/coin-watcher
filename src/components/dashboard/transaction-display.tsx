@@ -38,7 +38,7 @@ export function TransactionDisplay() {
   const client = usePublicClient({ chainId: chain?.id });
 
   const { data: transactions, isLoading } = useQuery({
-    queryKey: ['transactions', address, blockNumber],
+    queryKey: ['transactions', address, blockNumber?.toString()],
     queryFn: async () => {
       if (!address || !client || !blockNumber) return [];
       
