@@ -8,6 +8,8 @@
     "genkit:watch": "genkit start -- tsx --watch src/ai/dev.ts",
     "build": "next build",
     "start": "next start",
+    "build:base-mainnet": "NODE_ENV=production NETWORK=base-mainnet esbuild src/ai/genkit.ts --bundle --platform=node --format=cjs --outfile=dist/genkit.js --external:firebase-admin --external:firebase-functions --external:@genkit-ai/core",
+    "build:solana-mainnet": "NODE_ENV=production NETWORK=solana-mainnet esbuild src/ai/genkit.ts --bundle --platform=node --format=cjs --outfile=dist/genkit.js --external:firebase-admin --external:firebase-functions --external:@genkit-ai/core",
     "lint": "next lint",
     "typecheck": "tsc --noEmit"
   },
