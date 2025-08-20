@@ -12,11 +12,11 @@ import { ArrowRightLeft, Target } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 const transactions = [
-  { id: '1', hash: '0xabc...def', type: 'Buy', token: 'PEPE', amount: '1,000,000', value: 350.75, wallet: 'Degen Wallet' },
-  { id: '2', hash: '0xdef...ghi', type: 'Sell', token: 'SHIB', amount: '5,000,000', value: 450.20, wallet: 'Trading Wallet' },
-  { id: '3', hash: '0xghi...jkl', type: 'Buy', token: 'WIF', amount: '500', value: 1200.00, wallet: 'Main Wallet' },
-  { id: '4', hash: '0xjkl...mno', type: 'Buy', token: 'BONK', amount: '2,500,000', value: 150.55, wallet: 'Degen Wallet' },
-  { id: '5', hash: '0xmno...pqr', type: 'Sell', token: 'DOGE', amount: '2,000', value: 300.80, wallet: 'Trading Wallet' },
+  { id: '1', hash: '0xabc...def', type: 'Sell', token: 'PEPE', amount: '1,000,000', value: 650.75, wallet: 'Degen Wallet' },
+  { id: '2', hash: '0xdef...ghi', type: 'Sell', token: 'SHIB', amount: '5,000,000', value: 480.20, wallet: 'Trading Wallet' },
+  { id: '3', hash: '0xghi...jkl', type: 'Buy', token: 'WIF', amount: '500', value: 1270.00, wallet: 'Main Wallet' },
+  { id: '4', hash: '0xjkl...mno', type: 'Buy', token: 'BONK', amount: '2,500,000', value: 130.55, wallet: 'Degen Wallet' },
+  { id: '5', hash: '0xmno...pqr', type: 'Buy', token: 'DOGE', amount: '2,000', value: 330.80, wallet: 'Trading Wallet' },
 ];
 
 export function TransactionDisplay() {
