@@ -18,18 +18,9 @@ import { Skeleton } from "../ui/skeleton";
 import { formatUnits, parseAbiItem } from 'viem';
 import * as React from 'react';
 
-<<<<<<< HEAD
-const transactions = [
-  { id: '1', hash: '0xabc...def', type: 'Sell', token: 'PEPE', amount: '1,000,000', value: 650.75, wallet: 'Degen Wallet' },
-  { id: '2', hash: '0xdef...ghi', type: 'Sell', token: 'SHIB', amount: '5,000,000', value: 480.20, wallet: 'Trading Wallet' },
-  { id: '3', hash: '0xghi...jkl', type: 'Buy', token: 'WIF', amount: '500', value: 1270.00, wallet: 'Main Wallet' },
-  { id: '4', hash: '0xjkl...mno', type: 'Buy', token: 'BONK', amount: '2,500,000', value: 130.55, wallet: 'Degen Wallet' },
-  { id: '5', hash: '0xmno...pqr', type: 'Buy', token: 'DOGE', amount: '2,000', value: 330.80, wallet: 'Trading Wallet' },
-=======
 // Simplified ERC20 ABI for Transfer events
 const erc20Abi = [
   parseAbiItem('event Transfer(address indexed from, address indexed to, uint256 value)'),
->>>>>>> d1d1d7e (I see this error with the app, reported by NextJS, please fix it. The er)
 ];
 
 export function TransactionDisplay() {

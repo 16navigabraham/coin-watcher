@@ -1,10 +1,9 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { LayoutDashboard, Target, Settings } from 'lucide-react';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { WalletConnectButton } from '@/components/wallet-connect-button';
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, tooltip: 'Dashboard' },
@@ -14,9 +13,6 @@ const navItems = [
 
 export function MainNav() {
   const pathname = usePathname();
-  const { address, isConnected } = useAccount();
-  const { connect, connectors, isLoading, pendingConnector } = useConnect();
-  const { disconnect } = useDisconnect();
 
   return (
     <SidebarMenu>
@@ -35,23 +31,9 @@ export function MainNav() {
         </SidebarMenuItem>
       ))}
       <SidebarMenuItem>
-        <SidebarMenuButton asChild tooltip={isConnected ? "Disconnect Wallet" : "Connect Wallet"}>
-          {isConnected ? (
-            <Button variant="ghost" onClick={() => disconnect()}>
-              {address?.slice(0, 6)}...{address?.slice(-4)}
-            </Button>
-          ) : (
-            connectors.map((connector) => (
-              <Button
-                key={connector.id}
-                onClick={() => connect({ connector })}
-                disabled={!connector.ready || isLoading}
-              >
-                Connect Wallet {isLoading && pendingConnector?.id === connector.id && '(connecting)'}
-              </Button>
-            ))
-          )}
-        </SidebarMenuButton>
+        <div className="px-2 py-1">
+          <WalletConnectButton />
+        </div>
       </SidebarMenuItem>
     </SidebarMenu>
   );
